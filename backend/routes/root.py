@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
-from backend.db.db_operations import get_profiles, get_conversations, suggest_messages
+from backend.db.db_operations import get_profiles, get_all_profiles,get_conversations, suggest_messages
 from backend.db.databases import create_supabase_client
 
 router = APIRouter()
@@ -13,6 +13,15 @@ def read_root():
 @router.get("/profiles/{search_term}")
 def search_profiles(search_term: str):
     data = get_profiles(supabase, search_term)
+    if data.data:
+        return JSONResponse(content=data.data, media_type="application/json")
+    else:
+        raise HTTPException(status_code=404, detail="No profiles found")
+    return {"search_term": search_term}
+
+@router.get("/profiles")
+def search_profiles():
+    data = get_all_profiles(supabase)
     if data.data:
         return JSONResponse(content=data.data, media_type="application/json")
     else:
