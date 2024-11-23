@@ -1,5 +1,13 @@
 from backend.utils.llm_operations import recommend_messages
 
+def get_all_profiles(supabase):
+    # print(f'search_term: {search_term}')
+    # formatted_search_term = f"{search_term.replace(' ', ':* | ')}:*"
+    data = supabase.table("persons").select("*").execute()
+    # data = supabase.table("persons").select("*").execute()
+    # print(f'data: {data}')
+    return data
+
 def get_profiles(supabase, search_term):
     # print(f'search_term: {search_term}')
     formatted_search_term = f"{search_term.replace(' ', ':* | ')}:*"
