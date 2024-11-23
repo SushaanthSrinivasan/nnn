@@ -1,3 +1,9 @@
 deepgram-sdk
 pyaudio
 websocket-client
+httpx
+supabase
+sounddevice 
+pydub 
+scipy 
+numpy

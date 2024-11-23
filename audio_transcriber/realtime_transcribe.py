@@ -4,7 +4,7 @@ import websockets
 import json
 
 # Your Deepgram API key
-DEEPGRAM_API_KEY = 'your_deepgram_api_key'
+DEEPGRAM_API_KEY = ''
 
 # Deepgram WebSocket URL
 DEEPGRAM_URL = 'wss://api.deepgram.com/v1/listen'
